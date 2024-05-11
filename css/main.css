@@ -1,0 +1,83 @@
+/* TFLStatus
+ * A static web page that uses the TFL API to display the status of the London Underground lines.
+ * GitHub: https://www.github.com/0x4248/TFLStatus
+ * Licence: GNU General Public Licence v3.0
+ * By: 0x4248
+ */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+table {
+    width: 90%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.good {
+    background-color: #cfc;
+}
+
+.minor {
+    background-color: #ff0;
+}
+
+.severe {
+    background-color: #f00;
+}
+
+.closed {
+    background-color: #000;
+    color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #333;
+        color: #fff;
+    }
+
+    table {
+        border-color: #fff;
+    }
+
+    th {
+        background-color: #444;
+    }
+
+    tr:nth-child(even) {
+        background-color: #444;
+    }
+
+    .good {
+        background-color: #393;
+    }
+
+    .minor {
+        background-color: #aa0;
+    }
+
+    .severe {
+        background-color: #f66;
+    }
+
+    .closed {
+        background-color: #000;
+        color: #fff;
+    }
+    
+}
