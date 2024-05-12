@@ -66,7 +66,17 @@ function addData(data){
                 status.textContent += statuses.statusSeverityDescription + ' ';
             });
         } else {
-            status.textContent = line.lineStatuses[0].statusSeverityDescription;
+            const statusText = document.createElement('a');
+            statusText.textContent = line.lineStatuses[0].statusSeverityDescription;
+            statusText.href = '#';
+            statusText.onclick = function() {
+                if (line.lineStatuses[0].reason == undefined) {
+                    alert('No reason or good service on line');
+                } else {
+                    alert(line.lineStatuses[0].reason);
+                }
+            };
+            status.appendChild(statusText);
         }
         row.appendChild(name);
         row.appendChild(status);
