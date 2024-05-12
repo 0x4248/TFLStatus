@@ -13,7 +13,7 @@ function fetchStatus(){
         return fetchCache('statusData');
     }
 
-    return fetch('https://api.tfl.gov.uk/line/mode/tube/status')
+    return fetch('https://api.tfl.gov.uk/line/mode/tube,overground,dlr,national-rail,elizabeth-line/status')
         .then(response => response.json())
         .then(response => {
             registerCache('statusData', JSON.stringify(response), true);
@@ -73,12 +73,17 @@ function addData(data){
                 if (line.lineStatuses[0].reason == undefined) {
                     alert('No reason or good service on line');
                 } else {
-                    alert(line.lineStatuses[0].reason);
+                    let reasons = '';
+                    line.lineStatuses.forEach(statuses => {
+                        reasons += statuses.reason + '\n';
+                    });
+                    alert(reasons);
                 }
             };
             status.appendChild(statusText);
         }
         row.appendChild(name);
+        row.classList.add(line.id);
         row.appendChild(status);
         document.getElementById('lines').appendChild(row);
     });
