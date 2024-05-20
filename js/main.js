@@ -59,7 +59,12 @@ function addData(data){
     data.forEach(line => {
         const row = document.createElement('tr');
         const name = document.createElement('td');
-        name.textContent = line.name;
+        // check if tube
+        if (line.modeName == 'tube') {
+            name.innerHTML = '<code>TUBE</code> ' + line.name;
+        } else {
+            name.textContent = line.name;
+        }
         const status = document.createElement('td');
         if (line.lineStatuses.length > 1) {
             line.lineStatuses.forEach(statuses => {
@@ -83,7 +88,13 @@ function addData(data){
             status.appendChild(statusText);
         }
         row.appendChild(name);
-        row.classList.add(line.id);
+        name.classList.add(line.id);
+        if (line.lineStatuses[0].statusSeverity < 5) {
+            status.classList.add('high');
+        } else if (line.lineStatuses[0].statusSeverity != 10) {
+            status.classList.add('medium');
+        }
+
         row.appendChild(status);
         document.getElementById('lines').appendChild(row);
     });

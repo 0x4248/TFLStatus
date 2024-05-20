@@ -1,10 +1,11 @@
-
 .bakerloo {
   background:#985d32
 }
+
 .central {
   background:#ce4743
 }
+
 .circle {
   background:#dfbd34
 }
@@ -168,4 +169,12 @@
 
 .thameslink {
   background:#da4290
+}
+
+.high {
+  background:rgba(255, 157, 0, 0.5)
+}
+
+.medium {
+  background:rgba(255, 157, 0, 0.25)
 }
