@@ -13,7 +13,9 @@
         <h1>TFL Status</h1>
         <p>Live status of London's tube lines and National Rail services</p>
         <p id="status"></p>
-
+        
+        <label for="showAll">Show national rail:</label>
+        <input type="checkbox" id="showAll" onchange="clearCache('statusData');window.location.reload()" checked>
         <table>
             <thead>
                 <tr>
@@ -23,6 +25,7 @@
             </thead>
             <tbody id="lines">
             </tbody>
+        </table>
         <script src="js/cache.js"></script>
         <script src="js/main.js"></script>
     </body>

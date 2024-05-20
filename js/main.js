@@ -13,12 +13,23 @@ function fetchStatus(){
         return fetchCache('statusData');
     }
 
-    return fetch('https://api.tfl.gov.uk/line/mode/tube,overground,dlr,national-rail,elizabeth-line/status')
-        .then(response => response.json())
-        .then(response => {
-            registerCache('statusData', JSON.stringify(response), true);
-            return response;
-        });
+
+    let checkbox = document.getElementById('showAll');
+    if (checkbox.checked) {
+        return fetch('https://api.tfl.gov.uk/line/mode/tube,overground,dlr,national-rail,elizabeth-line/status')
+            .then(response => response.json())
+            .then(response => {
+                registerCache('statusData', JSON.stringify(response), true);
+                return response;
+            });
+    } else {
+        return fetch('https://api.tfl.gov.uk/line/mode/tube,overground,dlr,elizabeth-line/status')
+            .then(response => response.json())
+            .then(response => {
+                registerCache('statusData', JSON.stringify(response), true);
+                return response;
+            });
+    }
 }
 
 fetchStatus()
