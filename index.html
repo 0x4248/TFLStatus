@@ -22,7 +22,7 @@
         <p id="status"></p>
         
         <label for="showAll">Show national rail:</label>
-        <input type="checkbox" id="showAll" onchange="clearCache('statusData');window.location.reload()">
+        <input type="checkbox" id="showAll" onchange="clearCache('statusData'); fetchStatus().then(data => addData(data)).catch(error => console.error('Error fetching data:', error));">
         <table>
             <thead>
                 <tr>

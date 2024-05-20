@@ -13,7 +13,6 @@ function fetchStatus(){
         return fetchCache('statusData');
     }
 
-
     let checkbox = document.getElementById('showAll');
     if (checkbox.checked) {
         return fetch('https://api.tfl.gov.uk/line/mode/tube,overground,dlr,national-rail,elizabeth-line/status')
@@ -67,10 +66,10 @@ function ShowCacheWarning() {
 }
 
 function addData(data){
+    document.getElementById('lines').innerHTML = '';
     data.forEach(line => {
         const row = document.createElement('tr');
         const name = document.createElement('td');
-        // check if tube
         if (line.modeName == 'tube') {
             name.innerHTML = '<code>TUBE</code> ' + line.name;
         } else {
